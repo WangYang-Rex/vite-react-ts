@@ -1,14 +1,12 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
-// import Fetch from '@/lib/server/fetch';
 import Fetch from '../../lib/server/fetch'
-// import moment from 'moment';
 import dayjs from 'dayjs';
 import { Table, DatePicker, Space, Button, Modal, Form, Input, message, Upload } from 'antd';
 import './list.less';
 
 function List() {
   const [list, setList] = useState<any>([]);
-  const [date, setDate] = useState<any>(dayjs); // moment(new Date().toISOString().slice(0, 10))
+  const [date, setDate] = useState<any>(dayjs(new Date().toISOString().slice(0, 10))); // moment(new Date().toISOString().slice(0, 10))
   const pageRef = useRef({
     page: 1,
     pageSize: 20,
