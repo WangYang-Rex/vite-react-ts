@@ -1,0 +1,1 @@
+import{u as o,j as s,a as r}from"./index-3d162b52.js";import"./lodash-16a5b9a8.js";function t(){const e=o();return console.error(e),s("div",{id:"error-page",children:[r("h1",{children:"Oops!"}),r("p",{children:"Sorry, an unexpected error has occurred."}),r("p",{children:r("i",{children:e.statusText||e.message})})]})}export{t as default};

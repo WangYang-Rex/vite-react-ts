@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   createHashRouter,
@@ -12,12 +12,18 @@ import './styles/app.less'
 // import router from './router'
 import LeftNav from './components/leftnav/Leftnav' //'src/components/leftnav/Leftnav';
 import NewHeader from './components/newheader/Newheader';
-import Home from './pages/home/Home'
-import ErrorPage from './pages/ErrorPage'
-import FilePage from './pages/file/list'
-import JsErrorPage from './pages/jserror/list'
-import SlinkPage from './pages/slink/list'
-import RankPage from './pages/githubrank/list'
+// import Home from './pages/home/Home'
+// import ErrorPage from './pages/ErrorPage'
+// import FilePage from './pages/file/list'
+// import JsErrorPage from './pages/jserror/list'
+// import SlinkPage from './pages/slink/list'
+// import RankPage from './pages/githubrank/list'
+const Home = React.lazy(() => import('./pages/home/Home'))
+const ErrorPage = React.lazy(() => import('./pages/ErrorPage'))
+const FilePage = React.lazy(() => import('./pages/file/list'))
+const JsErrorPage = React.lazy(() => import('./pages/jserror/list'))
+const SlinkPage = React.lazy(() => import('./pages/slink/list'))
+const RankPage = React.lazy(() => import('./pages/githubrank/list'))
 
 /**
  * 主体
@@ -64,23 +70,28 @@ let router = createHashRouter([
     children: [
       {
         path: '/home',
-        element: <Home />,
+        // element: <Home />,
+        element: <Suspense fallback={<div>loading...</div>}><Home /></Suspense>,
       },
       {
         path: '/jserror/list',
-        element: <JsErrorPage />,
+        // element: <JsErrorPage />,
+        element: <Suspense fallback={<div>loading...</div>}><JsErrorPage /></Suspense>,
       },
       {
         path: '/slink/list',
-        element: <SlinkPage />,
+        // element: <SlinkPage />,
+        element: <Suspense fallback={<div>loading...</div>}><SlinkPage /></Suspense>,
       },
       {
         path: '/file/list',
-        element: <FilePage />,
+        // element: <FilePage />,
+        element: <Suspense fallback={<div>loading...</div>}><FilePage /></Suspense>,
       },
       {
         path: '/rank',
-        element: <RankPage />,
+        // element: <RankPage />,
+        element: <Suspense fallback={<div>loading...</div>}><RankPage /></Suspense>,
       },
     ]
   },
